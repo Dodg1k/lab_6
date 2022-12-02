@@ -23,5 +23,5 @@ class TestCircleArea(TestCase):
         self.assertRaises(TypeError, circle_area, False)
 
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
