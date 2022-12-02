@@ -41,7 +41,7 @@ jobs:
           standalone: true
           enable-plugins: pyside6
 
-
+ 
       - name: Python GUI With Tkinter
         uses: Nuitka/Nuitka-Action@v0.4
         with:
