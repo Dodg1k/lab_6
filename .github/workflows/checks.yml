@@ -34,7 +34,7 @@ jobs:
           path: build/cicle_test.exe
 
 
-      - Name: Qt GUI with Pyside6
+      - name: Qt GUI with Pyside6
         uses: Nuitka/Nuitka-Action@v0.4
         with:
           script-name: cicle_test.py
@@ -42,7 +42,7 @@ jobs:
           enable-plugins: pyside6
 
 
-      - Name: Python GUI With Tkinter
+      - name: Python GUI With Tkinter
         uses: Nuitka/Nuitka-Action@v0.4
         with:
           script-name: cicle_test.py
