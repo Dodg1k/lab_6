@@ -1,0 +1,18 @@
+from math import pi
+
+
+def circle_area(radius):
+    if type(radius) not in [int, float]:
+        raise TypeError("Radius must be non-negative rational number")
+    if radius < 0:
+        raise ValueError("Radius can't be negative")
+    return pi*radius**2
+
+
+
+
+
+
+
+# a = int(input())
+# print(circle_area(a))
