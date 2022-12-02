@@ -9,6 +9,7 @@ jobs:
 
     env:
       BUILD_CONFIG: 'Release'
+      SOLUTION: 'cicle_test.py'
 
     runs-on: ubuntu-latest
 
@@ -22,11 +23,11 @@ jobs:
 
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore $SOLUTION
 
 
       - name: Build
-        run: dotnet build --configuration $BUILD_CONFIG
+        run: dotnet build $SOLUTION --configuration $BUILD_CONFIG
 
       - name: Test
-        run: dotnet build --configuration $BUILD_CONFIG
+        run: dotnet build $SOLUTION --configuration $BUILD_CONFIG
