@@ -1,50 +1,39 @@
-name: code_checks
-
-on:
-  push:
-    branches: [master]
-
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [windows-latest]
+      
+    runs-on: ${{ matrix.os }}
+    
     steps:
-      - uses: actions/checkout@v2
-      - name: install python
-        uses: actions/setup-python@v2
+      - name: Check-out repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.9
-      - name: install departments
+          python-version: '3.10' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+          cache: 'pip'
+          cache-dependency-path: |
+            **/requirements*.txt
+            
+      - name: Install Dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip freeze > requirements.txt
-      - name: Test with pytest
-        run: |
-          pip install pytest
-          pytest cicle_test.py
-
-      - uses: Nuitka/Nuitka-Action@v0.4
+          pip install -r requirements.txt -r requirements-dev.txt
+          
+      - Name: Build Executable
+        uses: Nuitka/Nuitka-Action@v0.4
         with:
-          script-name: cicle_test.py
-
-
-      - name: Upload Artifact
+          script-name: kasa_cli
+          onefile: true
+  
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: exe
-          path: build/cicle_test.exe
-
-
-      - name: Qt GUI with Pyside6
-        uses: Nuitka/Nuitka-Action@v0.4
-        with:
-          script-name: cicle_test.py
-          standalone: true
-          enable-plugins: pyside6
-
- 
-      - name: Python GUI With Tkinter
-        uses: Nuitka/Nuitka-Action@v0.4
-        with:
-          script-name: cicle_test.py
-          standalone: true
-          enable-plugins: tk-inter
+          name: ${{ runner.os }} Build
+          path: |
+            build/*.exe
+            build/*.bin
+            build/*.app/**/*
