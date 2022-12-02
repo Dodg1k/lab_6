@@ -24,11 +24,11 @@ jobs:
 
       - uses: Nuitka/Nuitka-Action@v0.4
         with:
-          script-name: hello_world.py
+          script-name: cicle_test.py
 
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: exe
-          path: build/hello_world.exe
+          path: build/cicle_test.exe
