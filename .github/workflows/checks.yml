@@ -37,7 +37,7 @@ jobs:
       - Name: Qt GUI with Pyside6
         uses: Nuitka/Nuitka-Action@v0.4
         with:
-          script-name: my_qt_gui_app.py
+          script-name: cicle_test.py
           standalone: true
           enable-plugins: pyside6
 
@@ -45,6 +45,6 @@ jobs:
       - Name: Python GUI With Tkinter
         uses: Nuitka/Nuitka-Action@v0.4
         with:
-          script-name: my_tkinter_gui_app.py
+          script-name: cicle_test.py
           standalone: true
           enable-plugins: tk-inter
