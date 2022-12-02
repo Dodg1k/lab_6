@@ -21,3 +21,14 @@ jobs:
         run: |
           pip install pytest
           pytest cicle_test.py
+
+      - uses: Nuitka/Nuitka-Action@v0.4
+        with:
+          script-name: hello_world.py
+
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: exe
+          path: build/hello_world.exe
