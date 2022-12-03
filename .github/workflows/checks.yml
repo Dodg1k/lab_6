@@ -9,7 +9,7 @@ jobs:
   build-windows:
     runs-on: windows-2019
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v1
       - name: Install Python
         uses: actions/setup-python@v1
@@ -42,7 +42,7 @@ jobs:
           prerelease: false
 
       - name: Upload Release Asset
-        id: upload-release-asset
+        id: Upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -50,3 +50,4 @@ jobs:
           upload_url: ${{steps.create_release.outputs.upload_url}}
           asset_path: dist/cicle_test.exe
           asset_name: Cicle-Test-Windows-amd64.exe
+          asset_content_type: application/zip
