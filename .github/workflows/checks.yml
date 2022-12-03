@@ -9,7 +9,7 @@ jobs:
   build-windows:
     runs-on: windows-2019
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v1
       - name: Install Python
         uses: actions/setup-python@v1
