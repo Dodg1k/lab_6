@@ -49,3 +49,4 @@ jobs:
           upload_url: ${{steps.create_release.outputs.upload_url}}
           asset_path: dist/cicle_test.exe
           asset_name: Cicle-Test.exe
+          asset_content_type: application/zip
