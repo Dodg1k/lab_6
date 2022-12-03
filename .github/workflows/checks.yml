@@ -22,6 +22,8 @@ jobs:
           pip install pytest
           pytest cicle_test.py
 
+
+      - uses: actions/checkout@v2
       - uses: Nuitka/Nuitka-Action@v0.4
         with:
           script-name: cicle_test.py
@@ -31,4 +33,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: exe
-          path: build/test.exe
+          path: build/cicle_test.exe
