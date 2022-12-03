@@ -18,6 +18,10 @@ jobs:
       - name: Install requirements
         run: |
           pip install -r requirements.txt
+      - name: Test with pytest
+        run: |
+          pip install pytest
+          pytest cicle_test.py
       - name: Run PyInstaller
         run: |
           python -m PyInstaller cicle_test.spec
