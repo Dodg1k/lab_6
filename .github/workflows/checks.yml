@@ -1,32 +1,36 @@
-name: Python package
+name: code_checks
 
-on: [push]
+on:
+  push:
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.7", "3.8"]
-
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup Python # Set Python version
-        uses: actions/setup-python@v4
+      - uses: actions/checkout@v2
+      - name: install python
+        uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
-      # Install pip and pytest
-      - name: Install dependencies
+          python-version: 3.9
+      - name: install departments
         run: |
           python -m pip install --upgrade pip
-          pip install pytest
+          pip freeze > requirements.txt
       - name: Test with pytest
-        run: pytest cicle_test.py --doctest-modules --junitxml=junit/test-results-${{ matrix.python-version }}.xml
-      - name: Upload pytest test results
+        run: |
+          pip install pytest
+          pytest cicle_test.py
+
+
+      - uses: actions/checkout@v2
+      - uses: Nuitka/Nuitka-Action@v0.4
+        with:
+          script-name: cicle_test.py
+
+
+      - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: pytest-results-${{ matrix.python-version }}
-          path: junit/test-results-${{ matrix.python-version }}.exe
-        # Use always() to always run this step to publish test results when there are test failures
-        if: ${{ always() }}
+          name: nnew
+          path: cicle_test.exe
