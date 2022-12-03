@@ -42,7 +42,7 @@ jobs:
           prerelease: false
 
       - name: Upload Release Asset
-        id: Upload-release-asset
+        id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -50,4 +50,3 @@ jobs:
           upload_url: ${{steps.create_release.outputs.upload_url}}
           asset_path: dist/cicle_test.exe
           asset_name: Cicle-Test-Windows-amd64.exe
-          asset_content_type: application/zip
