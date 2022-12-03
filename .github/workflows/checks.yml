@@ -22,15 +22,10 @@ jobs:
           pip install pytest
           pytest cicle_test.py
 
-
-      - uses: actions/checkout@v2
-      - uses: Nuitka/Nuitka-Action@v0.4
-        with:
-          script-name: cicle_test.py
-
-
-      - name: Upload Artifact
+      - name: Upload pytest test results
         uses: actions/upload-artifact@v3
         with:
-          name: nnew
-          path: build/*.exe
+          name: pytest-results-${{ matrix.python-version }}
+          path: junit/test-results-${{ matrix.python-version }}.xml
+        # Use always() to always run this step to publish test results when there are test failures
+        if: ${{ always() }}
