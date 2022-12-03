@@ -26,11 +26,11 @@ jobs:
       - uses: actions/checkout@v2
       - uses: Nuitka/Nuitka-Action@v0.4
         with:
-          script-name: cicle_test.exe
+          script-name: cicle_test.py
 
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: exe
+          name: nnew
           path: build/cicle_test.exe
