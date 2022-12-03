@@ -5,8 +5,7 @@ on:
 
 
 jobs:
-  build-windows:
-    runs-on: windows-2019
+  build:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -39,12 +38,13 @@ jobs:
             Test Release v1.0.0
           draft: false
           prerelease: false
+
       - name: Upload Release Asset
-        id: upload-release-asset
+        id: UPload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{steps.create_release.outputs.upload_url}}
           asset_path: dist/cicle_test.exe
-          asset_name: Cicle-Test-Windows-amd64.exe
+          asset_name: Cicle-Test.exe
