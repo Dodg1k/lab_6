@@ -1,6 +1,8 @@
 name: Build Workflow
 
-on: [commit_comment]
+on:
+  push:
+    branches: [master]
 
 
 jobs:
@@ -50,4 +52,3 @@ jobs:
           upload_url: ${{steps.create_release.outputs.upload_url}}
           asset_path: dist/cicle_test.exe
           asset_name: Cicle-Test.exe
-          asset_content_type: application/zip
