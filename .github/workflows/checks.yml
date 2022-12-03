@@ -27,8 +27,8 @@ jobs:
           path: dist/cicle_test.exe
 
       - name: create release
-        id: create_release
-        uses: actions/create-release@v1
+        id: CReate_release
+        uses: actions/CReate-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
