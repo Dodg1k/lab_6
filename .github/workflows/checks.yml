@@ -30,6 +30,8 @@ jobs:
           name: Windows_test
           path: dist/cicle_test.exe
 
+
+
       - name: create release
         id: create_release
         uses: actions/create-release@v1
